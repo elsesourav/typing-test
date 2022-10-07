@@ -230,11 +230,6 @@ main section #main-heading {
 }
 
 
-
-
-
-
-
 /* -------------- typing section ----------------- */
 #typing-box {
   position: absolute;
@@ -348,8 +343,9 @@ main section #main-heading {
 
 #typing-input-box {
   position: relative;
-  width: calc(100vw - var(--extra) * 2);
+  width: calc(320px - var(--extra) * 2);
   height: 70px;
+  margin-top: 50px;
   display: grid;
   place-items: center;
 }
