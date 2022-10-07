@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>"Typing Test"</title>
+    <link rel="stylesheet" href="./css/style.css" />
+    <script src="./js/text.js" defer></script>
+    <script src="./js/main.js" defer></script>
+  </head>
+  <body>
+    <main>
+      <section>
+        <div id="main-heading"><p>Typing Test</p></div>
+        <div class="options _o">
+          <div class="opt-name">Difficalty</div>
+          <div class="opt-selection">
+            <span class="diff">Easy</span>
+            <span class="diff active">Normal</span>
+            <span class="diff">Hard</span>
+          </div>
+        </div>
+        <div class="options _o">
+          <div class="opt-name">Time</div>
+          <div class="opt-selection">
+            <div id="time-input-box"><input type="range" name="time" id="time-range" value="30" step="5" /></div>
+            <div id="show-set-time">03:00 <x>min.</x></div>  
+          </div>
+        </div>
+        <div class="options">
+          <div class="opt-name">Escape Word</div>
+          <div class="opt-selection"><input type="checkbox" id="esc-checkbox" checked></div>
+        </div>
+        <div class="options">
+          <div class="opt-name">Keywords</div>
+          <div class="opt-selection"><input type="checkbox" id="key-checkbox"></div>
+        </div>
+        <div class="options">
+          <div class="opt-name">Symbols</div>
+          <div class="opt-selection"><input type="checkbox" id="sym-checkbox"></div>
+        </div>
+        <div class="options">
+          <div class="opt-name">Selected Only</div>
+          <div class="opt-selection"><input type="checkbox" id="sel-checkbox"></div>
+        </div>
+        <button id="start-button">START</button>
+      </section>
+    </main>
+    <div id="typing-box">
+      <nav><div id="close-typing-window"><span></span></div></nav>
+      <div id="time-left"><code><p>Time Left</p> <span id="live-time">03:00</span><x>min.</x></code></div>
+      <div id="typing-text">
+        <section id="text-show">Lorem ipsum dolor sit amet consectetur adipisicing elit. Dicta quam fugit voluptatibus ducimus libero exercitationem. Labore fuga officia accusamus, perspiciatis quo pariatur deserunt aut possimus distinctio, dolore iste odio id.</section>
+      </div>
+      <div id="typing-input-box">
+        <input type="text" placeholder="Type..." id="typing-input" spellcheck="false">
+      </div>
+    </div>
+    <div id="result-window">
+      <section>
+        <div class="options">
+          <div class="opt-name">Time Used</div>
+          <div class="opt-selection"><div id="time-used">03:00</div><x>min.</x></div>
+        </div>
+        <div class="options">
+          <div class="opt-name">Accuracy</div>
+          <div class="opt-selection"><div id="accuracy">55</div><x>%</x></div>
+        </div>
+        <div class="options">
+          <div class="opt-name">Gross Speed</div>
+          <div class="opt-selection"><div id="gross-speed">40</div><x>wpm</x></div>
+        </div>
+        <div class="options">
+          <div class="opt-name">Need Speed</div>
+          <div class="opt-selection"><div id="need-speed">37</div><x>wpm</x></div>
+        </div>
+        <div class="options">
+          <div class="opt-name">Words Completed</div>
+          <div class="opt-selection"><div id="words-completed">154</div><x>w</x></div>
+        </div>
+        <div class="options">
+          <div class="opt-name">Words Correct</div>
+          <div class="opt-selection"><div id="words-correct">80</div><x>w</x></div>
+        </div>
+        <div class="options">
+          <div class="opt-name">Words Mistake</div>
+          <div class="opt-selection"><div id="words-mistake">74</div><x>w</x></div>
+        </div>
+        <button id="close-result-btn">Close</button>
+      </section>
+    </div>
+  </body>
+</html>
