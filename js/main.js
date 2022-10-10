@@ -247,8 +247,9 @@ function setupForTyping() {
     }
     firstTime = false;
     setTimeout(() => {
-
-      let val = typingInput.value.split(" ").join("");
+      let __v = typingInput.value;
+      let last = __v[__v.length - 1]
+      let val = __v.split(" ").join("");
       let need = text[xxCount];
       for (let i = 0; i < need.length; i++) {
         z[zCount + i].classList.remove("semi-com");
@@ -276,14 +277,15 @@ function setupForTyping() {
       } catch (e) { };
 
       typingInput.classList.remove("overflow");
+      let orignal = sliceStr(__v, 0, need.length);
 
       if ((escCheck && e.keyCode === 32 && val) ||
-        (escCheck && e.key == " " && touch) ||
-        (e.keyCode === 32 && val == need) ||
-        (e.key === " " && val == need)) {
+        (escCheck && last == " " && touch) ||
+        (last == " " && orignal == need && touch && __v.length == need.length + 1) ||
+        (e.keyCode === 32 && val == need)) {
         update(val);
       } else {
-        let orignal = sliceStr(val, 0, need.length);
+        
         if (val.length > need.length && orignal == need)
           typingInput.classList.add("overflow"); 
       }
