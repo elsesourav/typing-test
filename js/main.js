@@ -30,6 +30,10 @@ let keyCheck = false;
 let selCheck = false;
 let symCheck = false;
 let escCheck = true;
+let touch = false;
+
+
+document.addEventListener("touchstart", () => touch = true);
 
 difficaltys.forEach((difficalty, i) => {
   difficalty.addEventListener("click", () => {
@@ -244,7 +248,6 @@ function setupForTyping() {
     firstTime = false;
     setTimeout(() => {
 
-      console.log(e.charKey);
       let val = typingInput.value.split(" ").join("");
       let need = text[xxCount];
       for (let i = 0; i < need.length; i++) {
@@ -275,18 +278,17 @@ function setupForTyping() {
       typingInput.classList.remove("overflow");
 
       if ((escCheck && e.keyCode === 32 && val) ||
+        (escCheck && e.key == " " && touch) ||
         (e.keyCode === 32 && val == need) ||
         (e.key === " " && val == need)) {
         update(val);
       } else {
-        const nl = need.length;
-        const oi = typingInput.value;
-        const orignal = sliceStr(oi, 0, nl);
-        if (e.key = "" && orignal == need)
-          typingInput.classList.add("overflow");
+        let orignal = sliceStr(val, 0, need.length);
+        if (val.length > need.length && orignal == need)
+          typingInput.classList.add("overflow"); 
       }
       xxCount >= xx.length && reste();
-    })
+    }) 
   }
 }
 
