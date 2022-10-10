@@ -8,6 +8,7 @@
   font-family: cursive;
   user-select: none;
   touch-action: none;
+  transform: scale(1);
 }
 :root {
   --extra: 20px;
@@ -158,7 +159,8 @@ main section #main-heading {
   outline: 0;
   box-shadow: 0;
 }
-#start-button, #close-result-btn {
+#start-button,
+#close-result-btn {
   position: relative;
   margin-top: 20px;
   width: 320px;
@@ -174,7 +176,8 @@ main section #main-heading {
   font-size: 1.2rem;
   box-shadow: 1px 1px 5px #000;
 }
-#start-button:hover, #close-result-btn:hover {
+#start-button:hover,
+#close-result-btn:hover {
   background: #fff;
   color: #0000ff;
   text-shadow: 0 0 1px #000;
@@ -188,7 +191,7 @@ main section #main-heading {
   inset: 0;
   display: grid;
   place-items: center;
-  background:rgba(0, 0, 0, 0);
+  background: rgba(0, 0, 0, 0);
   backdrop-filter: blur(2px);
   transform: scale(0);
   transition: transform 0.3s linear;
@@ -196,7 +199,7 @@ main section #main-heading {
 }
 #result-window.active {
   transform: scale(1);
-  background:rgba(0, 0, 0, 0.3); 
+  background: rgba(0, 0, 0, 0.3);
 }
 #result-window section {
   position: relative;
@@ -221,14 +224,13 @@ main section #main-heading {
 #result-window section .options .opt-name {
   margin-right: 20px;
 }
-#result-window section .options .opt-selection{
+#result-window section .options .opt-selection {
   gap: 3px;
 }
-#result-window section .options .opt-selection div{
+#result-window section .options .opt-selection div {
   color: #0000ff;
   font-weight: 900;
 }
-
 
 /* -------------- typing section ----------------- */
 #typing-box {
@@ -362,23 +364,16 @@ main section #main-heading {
   box-shadow: inset 1px 1px 3px #000000;
   border-radius: 5px;
   padding: 2px 7px;
-  color: #ffffff;
   border-bottom: solid 1px #aeaeae;
 }
-
-
-
-
-
-
-z {
-  color: #dddddd;
-  font-family: "Trebuchet MS", Helvetica, sans-serif;
-  font-size: 1.1rem;
+#typing-input.overflow {
+  color: #ff0000;
+  background: green;
 }
-z.now {
+#typing-input {
   color: #ffffff;
 }
+
 xx {
   padding-bottom: 2px;
 }
@@ -391,12 +386,20 @@ xx.now {
   border-radius: 5px;
   z-index: -1;
 }
+z {
+  color: #dddddd;
+  font-family: "Trebuchet MS", Helvetica, sans-serif;
+  font-size: 1.1rem;
+}
+z.now {
+  color: #ffffff;
+}
 z.semi-com {
   color: #00ff00;
 }
 z.complite {
   color: #1e6c02;
-} 
+}
 z.rong {
   color: #512525;
 }
@@ -410,7 +413,8 @@ z.rong-letter.rong {
   text-decoration: underline;
   color: #5f2e2e;
 }
-z.cursor, z.cursor-b {
+z.cursor,
+z.cursor-b {
   position: relative;
   width: 100%;
   height: 100%;
@@ -421,25 +425,43 @@ z.cursor-b {
   box-shadow: -2px 0 #0000ff;
   animation: cursorAni1 1s step-end infinite;
 }
-z.cursor.complite, z.cursor-b.complite{
+z.cursor.complite,
+z.cursor-b.complite {
   box-shadow: 0 0 #0000ff;
 }
 
 @keyframes cursorAni {
   1% {
     box-shadow: 2px 0 #0000ff;
-  } 70% {
+  }
+  70% {
     box-shadow: 2px 0 #0000ff;
-  } 71% {
+  }
+  71% {
     box-shadow: 0 0 #0000ff;
   }
 }
 @keyframes cursorAni1 {
   1% {
     box-shadow: -2px 0 #0000ff;
-  } 70% {
+  }
+  70% {
     box-shadow: -2px 0 #0000ff;
-  } 71% {
+  }
+  71% {
     box-shadow: -0 0 #0000ff;
+  }
+}
+
+@media only screen and (min-width: 768px) {
+  *,
+  *::before,
+  *::after {
+    transform: scale(1.03);
+  }
+  #typing-text section {
+    max-width: 700px;
+    margin: calc(var(--extra) * 2);
+    font-size: 1.7rem;
   }
 }

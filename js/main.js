@@ -25,7 +25,7 @@ const wordsMistake = document.getElementById("words-mistake");
 const closeResultBtn = document.getElementById("close-result-btn");
 
 let difficaltyLvl = 1;
-let time = 3 * 60;
+let time = 2 * 60;
 let keyCheck = false;
 let selCheck = false;
 let symCheck = false;
@@ -147,12 +147,20 @@ function running(t) {
   }
 }
 
+function sliceStr(str, start, end) {
+  let s = "";
+  for (let i = start; i < end; i++)  s += str[i];
+  return s;
+}
+
+
 function setupForTyping() {
   let xxCount, zCount;
   wrong = right = 0;
   let text = neededText();
   let xx, z;
   typingInput.select();
+  liveTime.classList.remove("run-time-less-10");
   setTimeout(() => typingInput.placeholder = "", 2000);
 
   function reste() {
@@ -235,21 +243,23 @@ function setupForTyping() {
     }
     firstTime = false;
     setTimeout(() => {
+
       let val = typingInput.value.split(" ").join("");
-      for (let i = 0; i < text[xxCount].length; i++) {
+      let need = text[xxCount];
+      for (let i = 0; i < need.length; i++) {
         z[zCount + i].classList.remove("semi-com");
         z[zCount + i].classList.remove("rong-underline");
       }
       removeAllCursor();
       let j;
-      for (j = 0; j < val.length && j < text[xxCount].length; j++) {
+      for (j = 0; j < val.length && j < need.length; j++) {
         if (z[zCount + j].innerText == val[j]) {
           z[zCount + j].classList.add("semi-com");
         } else {
           break;
         }
       }
-      for (let k = j; k < val.length && k < text[xxCount].length; k++) {
+      for (let k = j; k < val.length && k < need.length; k++) {
         z[zCount + k].classList.add("rong-underline");
       }
 
@@ -261,9 +271,16 @@ function setupForTyping() {
         }
       } catch (e) { };
 
+      typingInput.classList.remove("overflow");
+
       if ((escCheck && e.keyCode === 32 && val) ||
-        (e.keyCode === 32 && val == text[xxCount])) {
+        (e.keyCode === 32 && val == need) || 
+        (e.key === " " && val == need)) {
         update(val);
+      } else {
+        let orignal = sliceStr(val, 0, need.length);
+        if (val.length > need.length && orignal == need)
+        typingInput.classList.add("overflow");
       }
       xxCount >= xx.length && reste();
     })
