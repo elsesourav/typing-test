@@ -72,7 +72,7 @@ function setDefultTime() {
   let m = `${Math.floor(time / 60)}`;
   let s = `${time % 60}`;
   liveTime.innerHTML =
-  `${m.length < 2 ? '0' : ''}${m}:${s.length < 2 ? '0' : ''}${s}`;
+    `${m.length < 2 ? '0' : ''}${m}:${s.length < 2 ? '0' : ''}${s}`;
 }
 
 function started() {
@@ -116,7 +116,7 @@ function running(t) {
   let m = `${Math.floor(t / 60)}`;
   let s = `${t % 60}`;
   liveTime.innerHTML =
-  `${m.length < 2 ? '0' : ''}${m}:${s.length < 2 ? '0' : ''}${s}`;
+    `${m.length < 2 ? '0' : ''}${m}:${s.length < 2 ? '0' : ''}${s}`;
   if (t > 10) {
     liveTime.classList.add("run-time-geter-10");
     liveTime.classList.remove("run-time-less-10");
@@ -238,12 +238,13 @@ function setupForTyping() {
 
   let firstTime = true;
   this.inputEvent = (e) => {
-    if(firstTime) {
+    if (firstTime) {
       running(time);
     }
     firstTime = false;
     setTimeout(() => {
 
+      console.log(e.charKey);
       let val = typingInput.value.split(" ").join("");
       let need = text[xxCount];
       for (let i = 0; i < need.length; i++) {
@@ -274,13 +275,15 @@ function setupForTyping() {
       typingInput.classList.remove("overflow");
 
       if ((escCheck && e.keyCode === 32 && val) ||
-        (e.keyCode === 32 && val == need) || 
+        (e.keyCode === 32 && val == need) ||
         (e.key === " " && val == need)) {
         update(val);
       } else {
-        let orignal = sliceStr(val, 0, need.length);
-        if (val.length > need.length && orignal == need)
-        typingInput.classList.add("overflow");
+        const nl = need.length;
+        const oi = typingInput.value;
+        const orignal = sliceStr(oi, 0, nl);
+        if (e.key = "" && orignal == need)
+          typingInput.classList.add("overflow");
       }
       xxCount >= xx.length && reste();
     })
@@ -331,7 +334,7 @@ function getText(ary2d, def) {
           }
         }
       } else {
-        word =  keyWords[Math.floor(Math.random() * keyWords.length)];
+        word = keyWords[Math.floor(Math.random() * keyWords.length)];
       }
     }
     let t = def == 0 ? word.toLowerCase() : word;
